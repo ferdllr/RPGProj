@@ -28,3 +28,10 @@ fun main() {
     // Exclui o personagem
     characterController.deleteCharacter(mainCharacter.name)
 }
+fun constCalc(value: Int): Int {
+    var modi = -5
+    for (i in 1..value) {
+        if (i.mod(2) == 0) modi++
+    }
+    return modi
+}
