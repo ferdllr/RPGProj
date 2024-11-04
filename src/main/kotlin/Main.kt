@@ -5,7 +5,7 @@ import com.ferdllr.Models.Race
 import com.ferdllr.controllers.CharacterController
 
 fun main() {
-    val characterController = CharacterController()
+    val characterController = CharacterController("db.db")
     val human = Race(1, 1, 1, 1, 1, 1, "Humano", "+1 em todos os atributos")
     val mainCharacter = Character().apply {
         name = "Hero"

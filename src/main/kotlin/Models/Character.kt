@@ -1,5 +1,7 @@
 package com.ferdllr.Models
 
+import java.util.*
+
 public class Character() : iStats {
 
     override var FOR: Int = 8;
@@ -8,7 +10,7 @@ public class Character() : iStats {
     override var SAB: Int = 8;
     override var CAR: Int = 8;
     override var CON: Int = 8;
-
+    var id: Int = 0
     var name: String = ""
     var desc: String = ""
     var age: Int = 0

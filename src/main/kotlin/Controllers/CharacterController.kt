@@ -5,7 +5,7 @@ import java.sql.Connection
 import java.sql.DriverManager
 import java.sql.SQLException
 
-class CharacterController {
+class CharacterController(private val dbPath: String) {
 
     private val connection: Connection? = getConnection()
 
@@ -16,7 +16,7 @@ class CharacterController {
     // Estabelece uma conexão com o banco de dados SQLite
     private fun getConnection(): Connection? {
         return try {
-            DriverManager.getConnection("jdbc:sqlite:db.db")
+            DriverManager.getConnection("jdbc:sqlite:$dbPath")
         } catch (e: SQLException) {
             e.printStackTrace()
             null
