@@ -16,7 +16,7 @@ class CharacterController {
     // Estabelece uma conexão com o banco de dados SQLite
     private fun getConnection(): Connection? {
         return try {
-            DriverManager.getConnection("jdbc:sqlite:database/db.db")
+            DriverManager.getConnection("jdbc:sqlite:db.db")
         } catch (e: SQLException) {
             e.printStackTrace()
             null
@@ -104,7 +104,7 @@ class CharacterController {
         }
     }
 
-    // (Opcional) Função para carregar um personagem pelo nome
+    // Função para carregar um personagem pelo nome
     fun loadCharacter(name: String): Character? {
         val sql = "SELECT * FROM Character WHERE name = ?"
         var character: Character? = null
@@ -129,5 +129,32 @@ class CharacterController {
             }
         }
         return character
+    }
+
+    // Nova função para carregar todos os personagens
+    fun loadAllCharacters(): List<Character> {
+        val sql = "SELECT * FROM Character"
+        val characters = mutableListOf<Character>()
+
+        connection?.createStatement()?.use { statement ->
+            val resultSet = statement.executeQuery(sql)
+            while (resultSet.next()) {
+                val character = Character().apply {
+                    this.name = resultSet.getString("name")
+                    this.age = resultSet.getInt("age")
+                    this.desc = resultSet.getString("description")
+                    this.FOR = resultSet.getInt("FOR")
+                    this.DEX = resultSet.getInt("DEX")
+                    this.INT = resultSet.getInt("INT")
+                    this.SAB = resultSet.getInt("SAB")
+                    this.CAR = resultSet.getInt("CAR")
+                    this.CON = resultSet.getInt("CON")
+                    this.hp = resultSet.getInt("hp")
+                    // Definir a raça conforme necessário
+                }
+                characters.add(character)
+            }
+        }
+        return characters
     }
 }
