@@ -19,6 +19,10 @@
             <id>mavenCentral</id>
             <url>https://repo1.maven.org/maven2/</url>
         </repository>
+        <repository>
+            <id>central</id>
+            <url>https://repo.maven.apache.org/maven2</url>
+        </repository>
     </repositories>
 
     <build>
@@ -61,7 +65,7 @@
                 <configuration>
                     <mainClass>MainKt</mainClass>
                 </configuration>
-            </plugin>
+            </plugin><plugin><groupId>org.apache.maven.plugins</groupId><artifactId>maven-compiler-plugin</artifactId><configuration><source>8</source><target>8</target></configuration></plugin>
         </plugins>
     </build>
 
@@ -71,6 +75,11 @@
             <artifactId>kotlin-test-junit5</artifactId>
             <version>2.0.0</version>
             <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.xerial</groupId>
+            <artifactId>sqlite-jdbc</artifactId>
+            <version>3.43.0.0</version>
         </dependency>
         <dependency>
             <groupId>org.junit.jupiter</groupId>
